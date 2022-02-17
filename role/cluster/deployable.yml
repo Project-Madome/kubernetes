@@ -5,7 +5,18 @@ metadata:
     name: deployable-cluster-role
 rules:
     - apiGroups: [""] # "" indicates the core API group
-      resources: ["services"]
+      resources:
+          [
+              "services",
+              "pods",
+              "deployments",
+              "deamonsets",
+              "replicasets",
+              "statefulsets",
+              "horizontalpodautoscalers",
+              "cronjobs",
+              "jobs",
+          ]
       verbs: ["get", "watch", "list", "create", "update", "patch"]
 ---
 kind: ClusterRoleBinding
