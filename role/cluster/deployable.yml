@@ -1,0 +1,23 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+    namespace: default
+    name: deployable-cluster-role
+rules:
+    - apiGroups: [""] # "" indicates the core API group
+      resources: ["services"]
+      verbs: ["get", "watch", "list", "create", "update", "patch"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+    name: deployable-cluster-role-binding
+subjects:
+    - kind: ServiceAccount
+      name: madome-runner
+      namespace: default
+      apiGroup: ""
+roleRef:
+    kind: ClusterRole
+    name: deployable-cluster-role
+    apiGroup: rbac.authorization.k8s.io
