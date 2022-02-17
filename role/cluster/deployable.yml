@@ -4,7 +4,7 @@ metadata:
     namespace: default
     name: deployable-cluster-role
 rules:
-    - apiGroups: [""] # "" indicates the core API group
+    - apiGroups: ["apps", "batch", "autoscaling"] # "" indicates the core API group
       resources: ["*"]
       verbs: ["get", "watch", "list", "create", "update", "patch"]
 ---
