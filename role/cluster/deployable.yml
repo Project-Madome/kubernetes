@@ -14,7 +14,7 @@ metadata:
     name: deployable-cluster-role-binding
 subjects:
     - kind: ServiceAccount
-      name: madome-runner
+      name: default
       namespace: default
       apiGroup: ""
 roleRef:
