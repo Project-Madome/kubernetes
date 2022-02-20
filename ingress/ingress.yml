@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: madome
+    labels:
+        name: madome
+    annotations:
+        # nginx.ingress.kubernetes.io/rewrite-target: /
+        nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+    ingressClassName: nginx
+    rules:
+        - http:
+              # host: localhost
+              paths:
+                  - pathType: Prefix
+                    path: "/auth"
+                    backend:
+                        service:
+                            name: madome-auth
+                            port:
+                                number: 3112
+
+                  - pathType: Prefix
+                    path: "/user"
+                    backend:
+                        service:
+                            name: madome-user
+                            port:
+                                number: 3112
+                  - pathType: Prefix
+                    path: "/(v1|v2)/book(s)?"
+                    backend:
+                        service:
+                            name: madome-library
+                            port:
+                                number: 3112
