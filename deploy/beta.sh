@@ -4,19 +4,19 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-./deploy.sh auth false git@github.com:Project-Madome/auth.madome.app.git
+./deploy/deploy.sh auth false git@github.com:Project-Madome/auth.madome.app.git
 
 if [ $? -ne 0 ]; then
     exit 1
 fi
 
-./deploy.sh user false git@github.com:Project-Madome/user.madome.app.git
+./deploy/deploy.sh user false git@github.com:Project-Madome/user.madome.app.git
 
 if [ $? -ne 0 ]; then
     exit 1
 fi
 
-./deploy.sh library false git@git.meu.works:madome/servers/library.git
+./deploy/deploy.sh library false git@git.meu.works:madome/servers/library.git
 
 if [ $? -ne 0 ]; then
     exit 1
