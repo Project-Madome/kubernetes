@@ -1,4 +1,4 @@
-./secret.sh
+./config.sh
 
 if [ $? -ne 0 ]; then
     exit 1
