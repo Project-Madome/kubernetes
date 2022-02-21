@@ -5,32 +5,35 @@ if [ $? -ne 0 ]; then
 fi
 
 SPECIFIED_SVC=$1
+UPDATE=$2
 
-if [ -n "$SPECIFIED_SVC" ]; then
+if [ -n "$SPECIFIED_SVC" ] && [ "$SPECIFIED_SVC" != "true" ]; then
     if [ "$SPECIFIED_SVC" = "user" ]; then
-        ./deploy/deploy.sh user beta git@github.com:Project-Madome/user.madome.app.git
+        ./deploy/deploy.sh user beta git@github.com:Project-Madome/user.madome.app.git $UPDATE
     elif [ "$SPECIFIED_SVC" = "auth" ]; then
-        ./deploy/deploy.sh auth beta git@github.com:Project-Madome/auth.madome.app.git
+        ./deploy/deploy.sh auth beta git@github.com:Project-Madome/auth.madome.app.git $UPDATE
     elif [ "$SPECIFIED_SVC" = "library" ]; then
-        ./deploy/deploy.sh library master git@git.meu.works:madome/servers/library.git
+        ./deploy/deploy.sh library master git@git.meu.works:madome/servers/library.git $UPDATE
     fi
 
     exit 1
 fi
 
-./deploy/deploy.sh auth beta git@github.com:Project-Madome/auth.madome.app.git
+UPDATE=$1
+
+./deploy/deploy.sh auth beta git@github.com:Project-Madome/auth.madome.app.git $UPDATE
 
 if [ $? -ne 0 ]; then
     exit 1
 fi
 
-./deploy/deploy.sh user beta git@github.com:Project-Madome/user.madome.app.git
+./deploy/deploy.sh user beta git@github.com:Project-Madome/user.madome.app.git $UPDATE
 
 if [ $? -ne 0 ]; then
     exit 1
 fi
 
-./deploy/deploy.sh library master git@git.meu.works:madome/servers/library.git
+./deploy/deploy.sh library master git@git.meu.works:madome/servers/library.git $UPDATE
 
 if [ $? -ne 0 ]; then
     exit 1

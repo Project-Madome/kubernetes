@@ -23,12 +23,19 @@ else
     fi
 fi
 
+if [ "$UPDATE" = "true" ]; then
+    git pull
+fi
+
 if [ $? -ne 0 ] && [ "$SVC" != "library" ]; then
     exit 1
 fi
 
-#           is_minikube / update_flag
-./deploy.sh true $UPDATE
+if [ "$SVC" = "library" ]; then
+    ./deploy.sh minikube
+else
+    ./deploy.sh
+fi
 
 if [ $? -ne 0 ]; then
     exit 1
