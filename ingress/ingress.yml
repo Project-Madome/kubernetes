@@ -10,8 +10,8 @@ metadata:
 spec:
     ingressClassName: nginx
     rules:
+        # - host: madome
         - http:
-              # host: localhost
               paths:
                   - pathType: Prefix
                     path: "/auth"
@@ -22,7 +22,7 @@ spec:
                                 number: 3112
 
                   - pathType: Prefix
-                    path: "/user"
+                    path: "/users"
                     backend:
                         service:
                             name: madome-user
