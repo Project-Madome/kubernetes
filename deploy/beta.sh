@@ -33,11 +33,11 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-./deploy/deploy.sh library master git@git.meu.works:madome/servers/library.git $UPDATE
+# ./deploy/deploy.sh library master git@git.meu.works:madome/servers/library.git $UPDATE
 
-if [ $? -ne 0 ]; then
-    exit 1
-fi
+# if [ $? -ne 0 ]; then
+#     exit 1
+# fi
 
 # ingress-nginx
 if [ -z "$(kubectl get deploy --namespace=ingress-nginx -o=name)" ]; then
