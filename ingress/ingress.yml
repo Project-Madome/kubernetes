@@ -4,9 +4,9 @@ metadata:
     name: madome
     labels:
         name: madome
-    annotations:
-        # nginx.ingress.kubernetes.io/rewrite-target: /
-        nginx.ingress.kubernetes.io/use-regex: "true"
+    # annotations:
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+    # nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
     ingressClassName: nginx
     rules:
@@ -29,7 +29,7 @@ spec:
                             port:
                                 number: 3112
                   - pathType: Prefix
-                    path: "/(v1|v2)/book(s)?"
+                    path: "/books"
                     backend:
                         service:
                             name: madome-library
